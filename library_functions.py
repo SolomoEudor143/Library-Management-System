@@ -67,7 +67,8 @@ def issue_book(book_list):
 
 def return_book(book_id):
   global current_user
-  cursor.execute("SELECT issued_on FROM issue_log WHERE book_id = %s AND customer_id = %s AND returned_on IS NULL",(book_id, current_user))
+  cursor.execute("SELECT issued_on FROM issue_log WHERE book_id = %s AND customer_id = %s AND returned_on IS NULL"
+                 ,(book_id, current_user))
   result = cursor.fetchone()
   if not result:
     return 0
@@ -77,7 +78,8 @@ def return_book(book_id):
   fine = 0
   if days_held > 14:
     fine = (days_held - 14) * 1
-  cursor.execute("UPDATE issue_log SET returned_on = %s WHERE book_id = %s AND customer_id = %s AND returned_on IS NULL",(returned_on, book_id, current_user))
+  cursor.execute("UPDATE issue_log SET returned_on = %s WHERE book_id = %s AND customer_id = %s AND returned_on IS NULL",
+                 (returned_on, book_id, current_user))
   cursor.execute("UPDATE books SET issued = 0 WHERE book_id = %s",(book_id,))
   mydb.commit()
   return fine
@@ -110,4 +112,5 @@ def reset_customers():
   cursor.execute("SET FOREIGN_KEY_CHECKS = 0")
   cursor.execute("TRUNCATE TABLE customers")
   cursor.execute("SET FOREIGN_KEY_CHECKS = 1")
+
   mydb.commit()
