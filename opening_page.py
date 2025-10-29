@@ -6,7 +6,7 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 root1 = ctk.CTk()
-root1.title("Login Page")
+root1.title("Welcome")
 root1.geometry("400x300")
 
 def Register():
@@ -31,3 +31,4 @@ frame1.grid_rowconfigure(0, weight=1)
 frame1.grid_columnconfigure((0, 1), weight=1)
 
 root1.mainloop()
+
