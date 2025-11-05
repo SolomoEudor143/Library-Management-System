@@ -2,9 +2,9 @@ import mysql.connector
 import datetime
 
 mydb = mysql.connector.connect(
-  host="solomoeudor.space",
+  host="localhost",
   user="dps",
-  password="nobitches",
+  password="1234",
   database="lms"
 )
 
@@ -114,3 +114,4 @@ def reset_customers():
   cursor.execute("SET FOREIGN_KEY_CHECKS = 1")
 
   mydb.commit()
+
